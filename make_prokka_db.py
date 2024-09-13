@@ -245,7 +245,7 @@ def parse_args():
                         default='genbank',
                         help='NCBI section to download (default: %(default)s)')
     parser.add_argument('-l', '--assembly-level', dest='assembly_level',
-                        choices=ngd.NgdConfig.get_choices('assembly_level'),
+                        choices=ngd.NgdConfig.get_choices('assembly_levels'),
                         default='complete',
                         help='Assembly level of genomes to download (default: %(default)s)')
     parser.add_argument('-g', '--group', dest='group',
@@ -274,11 +274,11 @@ def main():
         print("Start downloading {}".format(args.taxid))
         print("Location {}".format(args.outdir))
         ngd.download(section=args.section,
-                     taxid=args.taxid,
-                     group=args.group,
+                     taxids=args.taxid,
+                     groups=args.group,
                      output=args.outdir,
-                     file_format='genbank',
-                     assembly_level=args.assembly_level,
+                     file_formats='genbank',
+                     assembly_levels=args.assembly_level,
                      metadata_table=meta_file,
                      parallel=args.parallel)
         
